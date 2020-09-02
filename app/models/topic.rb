@@ -1,3 +1,3 @@
 class Topic < ApplicationRecord
-    # has_many :notes
+     has_many :notes
 end
