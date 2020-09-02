@@ -2,15 +2,18 @@ class Api::NotesController < ApplicationController
     def index
 
         notes = Note.all
-        render json: notes
+        #render json: notes #<-- before we added the serializer
+        render json: NoteSerializer.new(notes) 
 
     end
+
     def create
         note = Note.new(notes_params)
         if note.save
             render json: note
         else
             render json:{errors: note.errors.full_message}
+        end
     end
 
 
