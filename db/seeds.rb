@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+wisdom = Note.create(name: "Wisdom")
+heaven = Note.create(name: "Heaven")
+discernment = Note.create(name: "Discernment")
+forgiveness = Note.create(name: "Forgiveness")
