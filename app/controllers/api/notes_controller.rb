@@ -9,8 +9,9 @@ class Api::NotesController < ApplicationController
 
     def create
         note = Note.new(notes_params)
+       
         if note.save
-            render json: note, status: :accepted
+            render json: NoteSerializer.new(note), status: :accepted
         else
             render json:{errors: note.errors.full_message}, status: unprocessible_entity
         end
