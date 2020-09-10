@@ -20,20 +20,20 @@ class Api::NotesController < ApplicationController
     def edit
     end
 
-    #def update
+    def update
       #raise params.inspect 
-       #note = Note.find_by(id: params[:id])
+       note = Note.find_by(id: params[:id])
        #byebug
-        #if note.update(notes_params) 
-     #if params[:description]                        
+        if note.update(description: params[:description], speaker: params[:speaker]) 
+     #if note.update(notes_params)                        
        #if note.description = params[:description]
          #note.save
-       # render json: NoteSerializer.new(note), status: :accepted
-       #else
-       # render render json:{errors: note.errors.full_message}, status: unprocessible_entity
-       #end
+       render json: NoteSerializer.new(note), status: :accepted
+       else
+       render json:{errors: note.errors.full_message}, status: unprocessible_entity
+       end
         
-    #end
+    end
 
 
 
@@ -41,7 +41,7 @@ private
 
 def notes_params
 
-    params.require(:note).permit(:id,:title,:description,:speaker, :link_url, :topic_id)
+    params.require(:note).permit(:id,:title,:description,:speaker, :link_url,:topic_id)
 end
 
 
